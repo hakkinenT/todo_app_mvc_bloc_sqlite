@@ -31,7 +31,7 @@ The following technologies were used in this project:
 - [rxdart](https://pub.dev/packages/rxdart)
 
 ## Knowledge of Flutter/Dart
-The following Flutter/Dart knowledge was used in this project:
+The following Flutter/Dart knowledge was applied in this project:
 - Navigation 1.0
   - Generate Route
   - Arguments between routes
