@@ -35,8 +35,8 @@ class _RegisterViewState extends State<RegisterView> {
           Navigator.pushNamedAndRemoveUntil(
               context, homePage, (route) => false);
         } else if (state.status.isSubmissionFailure) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(snackbar(context, state.errorMessage));
+          ScaffoldMessenger.of(context).showSnackBar(
+              snackbarError(context, message: state.errorMessage));
         } else if (state.status.isSubmissionInProgress) {
           showDialog(
               context: context,

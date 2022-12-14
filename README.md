@@ -1,7 +1,7 @@
 # Flutter MVC Todo App with Bloc and Sqlite
 
 ## Project Status
-In completion phase
+Concluded
 
 ## Features
 

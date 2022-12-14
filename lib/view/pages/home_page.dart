@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animation/view/widgets/custom_snackbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../controller/controller.dart';
@@ -45,7 +46,8 @@ class HomeView extends StatelessWidget {
                   if (state.todoStatus == TodoStatus.failure) {
                     ScaffoldMessenger.of(context)
                       ..hideCurrentSnackBar()
-                      ..showSnackBar(const SnackBar(content: Text('Erro')));
+                      ..showSnackBar(snackbarError(context,
+                          message: 'Não foi possível obter os dados'));
                   }
                 }),
             BlocListener<TodoControllerBloc, TodoControllerState>(
@@ -57,20 +59,13 @@ class HomeView extends StatelessWidget {
                   final messenger = ScaffoldMessenger.of(context);
                   messenger
                     ..hideCurrentSnackBar()
-                    ..showSnackBar(SnackBar(
-                      content: Text('${deleteTodo.title} excluida'),
-                      dismissDirection: DismissDirection.startToEnd,
-                      padding: const EdgeInsets.all(16),
-                      action: SnackBarAction(
-                        label: 'Desfazer',
-                        onPressed: () {
-                          messenger.hideCurrentSnackBar();
-                          context
-                              .read<TodoControllerBloc>()
-                              .add(const TodoControllerUndoDeletionRequested());
-                        },
-                      ),
-                    ));
+                    ..showSnackBar(snackbarSuccess(context,
+                        message: '${deleteTodo.title} excluida', onPressed: () {
+                      messenger.hideCurrentSnackBar();
+                      context
+                          .read<TodoControllerBloc>()
+                          .add(const TodoControllerUndoDeletionRequested());
+                    }, labelActionButton: "Desfazer"));
                 }),
           ],
           child: BlocBuilder<TodoControllerBloc, TodoControllerState>(

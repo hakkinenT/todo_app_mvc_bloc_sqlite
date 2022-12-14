@@ -40,8 +40,8 @@ class _AddTodoViewState extends State<AddTodoView> {
         if (state.formStatus.isSubmissionSuccess) {
           Navigator.pop(context);
         } else if (state.formStatus.isSubmissionFailure) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(snackbar(context, state.errorMessage!));
+          ScaffoldMessenger.of(context).showSnackBar(
+              snackbarError(context, message: state.errorMessage!));
         } else if (state.formStatus.isSubmissionInProgress) {
           showDialog(
               context: context,
